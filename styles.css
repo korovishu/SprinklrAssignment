@@ -2,15 +2,19 @@ ul {
   list-style: none;
 }
 .container {
+  position: relative;
+  left: 450px;
   display: grid;
-  margin: auto;
-  grid-template-columns: 300px 800px;
+  margin: 10px;
+  grid-template-columns: 300px 500px;
+  grid-template-rows: 800px 20px;
+  overflow: hidden;
   justify-items: center;
 }
 li {
   width: 200px;
-  margin: 10px 10px 0 0;
-  padding: 10px 10px 10px 45px;
+  margin: 5px 5px 0 0;
+  padding: 12px 12px 10px 45px;
   background-repeat: no-repeat;
   background-position: left center;
   text-align: left center;
@@ -26,8 +30,7 @@ li {
 img {
   width: 500px;
   height: 800px;
-  background-position: center center;
-  background-repeat: no-repeat;
+  object-fit: cover;
 }
 div.label {
   grid-column-start: 2; /* start at column line 1 */
