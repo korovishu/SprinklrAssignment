@@ -3,26 +3,31 @@ ul {
 }
 .container {
   display: grid;
+  margin: auto;
   grid-template-columns: 300px 800px;
   justify-items: center;
 }
 li {
   width: 200px;
   margin: 10px 10px 0 0;
-  padding: 5px 5px 0 45px;
+  padding: 10px 10px 10px 45px;
   background-repeat: no-repeat;
   background-position: left center;
   text-align: left center;
   background-size: 40px;
+  cursor: pointer;
 }
 .active {
   background-color: blue;
   color: white;
+  border-radius: 5px;
 }
 
 img {
-  width: 400px;
-  height: auto;
+  width: 500px;
+  height: 800px;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 div.label {
   grid-column-start: 2; /* start at column line 1 */
