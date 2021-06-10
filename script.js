@@ -7,16 +7,6 @@ var flag = true; // Flag for initial loading.
 /*
     UTILITY FUNCTIONS
 */
-// To shorten a string of length more than 25 characters.
-const shorten = function(string){
-    let res;
-    if(string.length > 25){
-        res = string.slice(0,10)+"..."+string.slice(-15); 
-    } else {
-        res = string.slice(0);
-    }
-    return res;
-}
 // To change the preview image for current selected item.
 const changePreview = function(currItem){
     activeItem.classList.toggle("active");
@@ -40,7 +30,9 @@ container.append(label);
 itemList.forEach((item)=>{
     let listItem = document.createElement("li");
     listItem.setAttribute("id",item["title"]);
-    listItem.innerText = shorten(item["title"]);
+    listItem.innerHTML = `
+    <div class="ellipses">${item["title"]}</div>
+    `;
     listItem.style.backgroundImage = `url('${item["previewImage"]}')`;
     // Initialize display for the first item.
     if(flag){
@@ -51,6 +43,15 @@ itemList.forEach((item)=>{
         flag = false;
     }
     list.append(listItem);
+})
+
+// Fixing text that overflows 
+var ellipsesText = document.querySelectorAll(".ellipses");
+ellipsesText.forEach((item)=>{
+    if(item.offsetWidth < item.scrollWidth){
+        let text = item.textContent;
+        item.dataset.tail = text.slice(text.length - 10);
+    }
 })
 
 /*
