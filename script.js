@@ -1,7 +1,7 @@
 import itemList from "/items/itemlist.js"
 var container = document.querySelector("div.container");
 
-var activeItem,image; // Global variables for selected item and preview image elements.
+var activeItem,image,label; // Global variables for selected item, preview image,label elements.
 var flag = true; // Flag for initial loading.
 
 /*
@@ -24,14 +24,19 @@ const changePreview = function(currItem){
     activeItem.classList.toggle("active");
     let src = activeItem.style.backgroundImage; // src is of format: url('...')
     src = src.substring(5,src.length-2); // Extracting path of image
-    image.setAttribute("src",src);
+    image.setAttribute("src",src); // set image
+    label.innerText = activeItem.getAttribute('id');
 }
 
 // Adding items to html
 var list = document.createElement("ul");
 image = document.createElement("img");
+label = document.createElement("div");
+label.classList.add("label");
 container.append(list);
 container.append(image);
+container.append(label);
+
 itemList.forEach((item)=>{
     let listItem = document.createElement("li");
     listItem.setAttribute("id",item["title"]);
@@ -42,6 +47,7 @@ itemList.forEach((item)=>{
         activeItem = listItem;
         activeItem.classList.toggle("active");
         image.setAttribute("src",item["previewImage"]);
+        label.innerText = item["title"];
         flag = false;
     }
     list.append(listItem);
