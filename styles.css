@@ -2,8 +2,9 @@ ul {
   list-style: none;
 }
 .container {
+  width: fit-content;
   position: relative;
-  left: 450px;
+  left: 400px;
   display: grid;
   margin: 10px;
   grid-template-columns: 300px 500px;
